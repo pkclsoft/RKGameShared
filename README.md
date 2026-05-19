@@ -6,7 +6,7 @@ For a lot of 2025 I was working on a game inspired by the wonderful Apple TV ser
 
 In this game, I first started work on a SceneKit/SpriteKit implementation and had that working well on iOS/tvOS, and macOS.
 
-Then in WWDC 2026 it was announced that SceneKit would be no more, and RealityKit, the new shiny.  So I pivotted and spent some months reworking the game to run in RealityKit/SpriteKit.
+Then in WWDC 2025 it was announced that SceneKit would be no more, and RealityKit, the new shiny.  So I pivotted and spent some months reworking the game to run in RealityKit/SpriteKit.
 
 This repository contains the utility code I wrote to get the game to behave similarly to what I had under SceneKit.
 
