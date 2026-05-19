@@ -2,7 +2,7 @@
 
 A small collection of utilities to assist with code generation of 3D models for RealityKit.
 
-For a lot of 2025 I was working on a game inspired by the wonderful Apple TV series, [Severence](https://en.wikipedia.org/wiki/Severance_(TV_series).
+For a lot of 2025 I was working on a game inspired by the wonderful Apple TV series, [Severence](https://en.wikipedia.org/wiki/Severance_(TV_series)).
 
 In this game, I first started work on a SceneKit/SpriteKit implementation and had that working well on iOS/tvOS, and macOS.
 
