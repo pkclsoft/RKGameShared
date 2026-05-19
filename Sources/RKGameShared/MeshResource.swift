@@ -1,6 +1,6 @@
 //
 //  MeshResource.swift
-//  SKGameShared
+//  RKGameShared
 //
 //  Created by Peter Easdown on 25/7/2025.
 //
@@ -96,6 +96,9 @@ public extension MeshResource {
         return try MeshResource.generate(from: [pyramid])
     }
     
+    /// Returns a simple box Elements object of the specified size.
+    /// - Parameter ofSize: the size of the box
+    /// - Returns: An `Elements` object describing a box.
     static func boxElements(ofSize: RKVector) -> Elements {
         let result : Elements = Elements()
         
@@ -150,7 +153,13 @@ public extension MeshResource {
             return try! MeshResource.generate(from: [boxElements(ofSize: ofSize).meshDescriptor(named: "box")])
         }
     }
-
+    
+    /// Private helper function that adds a single side to a rounded box.
+    /// - Parameters:
+    ///   - startingAt: the starting position of the side.
+    ///   - inDirection: the direction in which the side should be projected.
+    ///   - withCornerRadius: the corner radius used to generate the joining curve at the corner.
+    ///   - roundedRectangle: the `Elements` object to which the side is added.
     private static func addSide(startingAt: RKVector, inDirection: RKVector, withCornerRadius: Float, toRoundedRectangle roundedRectangle: Elements) {
         var pos = startingAt
         
@@ -197,10 +206,26 @@ public extension MeshResource {
         }
     }
     
+    
+    /// Generates a simple box of the specified size with curved corners of the defined radius.
+    /// - Parameters:
+    ///   - ofSize: Provides the overall 3D dimensions of the box.
+    ///   - withXandZCornerRadius: specifies the radius that defines the corners of the box.
+    /// - Returns: A MeshResource defining a box that respects the input parameters.
     static func generateRoundedBox(ofSize: RKVector, withXandZCornerRadius: Float) throws -> MeshResource {
         return try generateRoundedBox(ofSize: ofSize, lowerScale: 1.0, withXandZCornerRadius: withXandZCornerRadius)
     }
     
+    /// Generates a box with rounded corners as defined by `withXandZCornerRadius`, noting that the curved corners only apply in the
+    /// X and Z axes..
+    /// - Parameters:
+    ///   - ofSize: Provides the overall 3D dimensions of the box were the upper and lower scales o be 1.0.
+    ///   - lowerScale: this scale is applied to the base of the box, allowing the bottom of the box to take on a different dimension in relation to the 1.0 scale.  This scale applies only to the X and Z axis.
+    ///   - withLowerFace: when `true` a surface covering the lower face is added.
+    ///   - withTopFace: when `true` a surface covering the top face is added.
+    ///   - adjustLowerBy: when non-zero, allows the bottom face of the box to be shifted in the X and Z axes.
+    ///   - withXandZCornerRadius: specifies the radius that defines the corners of the box.
+    /// - Returns: A MeshResource defining a box that respects the input parameters.
     static func generateRoundedBox(ofSize: RKVector,
                                    lowerScale: Float,
                                    withLowerFace: Bool = true,
@@ -262,7 +287,6 @@ public extension MeshResource {
                 withCornerRadius: withXandZCornerRadius * lowerScale,
                 toRoundedRectangle: elements)
 
-//        elements.printVertices(withHeading: "mat")
         for index in firstPointOnRectangle ..< firstPointOnRectangle + pointsPerLayer - 1 {
             elements.append(indices: [
                 index, index + pointsPerLayer, index + 1,

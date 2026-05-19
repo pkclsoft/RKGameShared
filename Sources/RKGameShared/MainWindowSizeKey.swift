@@ -1,6 +1,6 @@
 //
 //  MainWindowSizeKey.swift
-//  SKGameShared
+//  RKGameShared
 //
 //  Created by Peter Easdown on 4/8/2025.
 //
